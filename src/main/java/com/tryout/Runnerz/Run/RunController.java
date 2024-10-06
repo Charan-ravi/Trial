@@ -1,6 +1,7 @@
 package com.tryout.Runnerz.Run;
 
 //import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 //import org.springframework.web.server.ResponseStatusException;
@@ -34,12 +35,12 @@ public class RunController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
-    void create(@RequestBody Run run){
+    void create(@Valid @RequestBody Run run){
         runRepository.create(run);
     }
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/update/{id}")
-    void update(@RequestBody Run run,@PathVariable Integer id){
+    void update(@Valid @RequestBody Run run,@PathVariable Integer id){
         runRepository.update(run,id);
     }
     @ResponseStatus(HttpStatus.NO_CONTENT)
